@@ -1,0 +1,8 @@
+{
+  "name": "projectAndNote",
+  "description": "Capture now. Enrich later. The 100% offline workspace that adapts to your mind.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

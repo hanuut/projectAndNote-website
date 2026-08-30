@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', sans-serif;
+}
+
+/* Base resets for a solid dark background */
+body {
+  background-color: #0D141B;
+}
+
+/* Glitch Button Styles */
+.btn-glitch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 3rem;
+  background-color: #F5C542;
+  color: #0D141B;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  /* Bold parallelogram edge */
+  clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+  /* Glowing drop-shadow blending Yellow and Light Purple */
+  box-shadow: 
+    0 0 20px rgba(245, 197, 66, 0.4), 
+    8px 0 15px rgba(179, 157, 219, 0.6);
+  transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.2s ease-out;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-glitch:hover {
+  transform: scale(1.02) translateY(-1px);
+  box-shadow: 
+    0 0 25px rgba(245, 197, 66, 0.5), 
+    12px 0 20px rgba(179, 157, 219, 0.7);
+}
+
+.btn-glitch::before,
+.btn-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0D141B; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: inset(100% 0 0 0);
+  z-index: -1;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.btn-glitch::before {
+  color: #B39DDB;
+  text-shadow: -2px 0 #B39DDB;
+  animation: glitch-anim-1 4s infinite linear alternate-reverse;
+}
+
+.btn-glitch::after {
+  color: #3DD68C;
+  text-shadow: 2px 0 #3DD68C;
+  animation: glitch-anim-2 4s infinite linear alternate-reverse;
+  animation-delay: 2s;
+}
+
+/* 
+  Glitch Keyframes: Active only ~5% of the time in a 4s loop
+  to simulate infrequent glitching (every 3-5s).
+*/
+@keyframes glitch-anim-1 {
+  0%, 94% {
+    clip-path: inset(100% 0 0 0);
+    transform: translate(0);
+  }
+  95% {
+    clip-path: inset(20% 0 80% 0);
+    transform: translate(-3px, 1px);
+  }
+  96% {
+    clip-path: inset(60% 0 10% 0);
+    transform: translate(3px, -1px);
+  }
+  97% {
+    clip-path: inset(10% 0 50% 0);
+    transform: translate(-3px, 2px);
+  }
+  98% {
+    clip-path: inset(80% 0 5% 0);
+    transform: translate(3px, -2px);
+  }
+  99%, 100% {
+    clip-path: inset(100% 0 0 0);
+    transform: translate(0);
+  }
+}
+
+@keyframes glitch-anim-2 {
+  0%, 94% {
+    clip-path: inset(100% 0 0 0);
+    transform: translate(0);
+  }
+  95% {
+    clip-path: inset(10% 0 60% 0);
+    transform: translate(3px, -1px);
+  }
+  96% {
+    clip-path: inset(80% 0 5% 0);
+    transform: translate(-3px, 2px);
+  }
+  97% {
+    clip-path: inset(40% 0 30% 0);
+    transform: translate(3px, -2px);
+  }
+  98% {
+    clip-path: inset(5% 0 80% 0);
+    transform: translate(-3px, 1px);
+  }
+  99%, 100% {
+    clip-path: inset(100% 0 0 0);
+    transform: translate(0);
+  }
+}
+
+/* Horizontal Scanning Line / Noise overlay */
+.scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.4);
+  opacity: 0.3;
+  animation: scan 2.5s linear infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(100px);
+  }
+}
