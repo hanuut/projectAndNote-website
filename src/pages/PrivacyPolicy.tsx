@@ -1,119 +1,90 @@
 import React from 'react';
 import LegalNav from '../components/LegalNav';
+import Footer from '../components/Footer';
 
 export default function PrivacyPolicy() {
   return (
-    <div className="min-h-screen bg-[#0D141B] font-sans selection:bg-[#F5C542] selection:text-[#0D141B]">
+    <div className="min-h-screen bg-[#090E13] font-sans selection:bg-[#F5C542] selection:text-[#090E13]">
       <LegalNav />
       
       <main className="max-w-3xl mx-auto py-16 px-6 text-[#94A8BA] space-y-6">
-        <header className="mb-12">
-          <h1 className="text-4xl font-black text-white mb-4 tracking-tight">Privacy Policy for projectAndNote</h1>
-          <p className="text-sm uppercase tracking-widest text-[#B39DDB]">Last Updated: August 29, 2026</p>
+        <header className="mb-12 border-b border-white/10 pb-8">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="px-2.5 py-0.5 rounded text-[11px] font-mono bg-[#3DD68C]/15 text-[#3DD68C] border border-[#3DD68C]/30 font-bold uppercase">
+              100% Local-First
+            </span>
+          </div>
+          <h1 className="text-4xl sm:text-5xl font-black text-white mb-4 tracking-tight">
+            Privacy Policy for projectAndNote
+          </h1>
+          <p className="text-xs font-mono uppercase tracking-widest text-[#B39DDB]">
+            Last Updated: August 31, 2026
+          </p>
         </header>
 
-        <section>
-          <h2 className="text-2xl font-bold text-white mt-12 mb-4 flex items-center gap-4">
-            <span className="w-6 h-1 bg-[#3DD68C] inline-block"></span>
-            1. Introduction
+        <section className="space-y-3">
+          <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+            <span className="w-4 h-1 bg-[#3DD68C]"></span>
+            1. Fundamental Privacy Philosophy
           </h2>
           <p className="leading-relaxed">
-            projectAndNote ("we", "our", or "us") respects your privacy. Our core philosophy is that your thoughts belong to you. This Privacy Policy explains how we handle your data when you use our mobile application.
+            projectAndNote ("we", "our", or "us") is built around a single uncompromisable premise: <strong>your thoughts belong entirely to you</strong>. Unlike cloud-centric note platforms, our architecture does not rely on remote synchronization servers.
           </p>
         </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-white mt-12 mb-4 flex items-center gap-4">
-            <span className="w-6 h-1 bg-[#F5C542] inline-block"></span>
-            2. 100% Local Storage & Data Ownership
+        <section className="space-y-3">
+          <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+            <span className="w-4 h-1 bg-[#F5C542]"></span>
+            2. 100% Local SQLite Storage
           </h2>
-          <p className="leading-relaxed mb-4">
-            All of your user-generated content—including text notes, audio recordings, to-do lists, whiteboard drawings, and imported files—is stored locally on your device using an internal SQLite database and secure file sandbox.
+          <p className="leading-relaxed">
+            All user-generated content—including formatted text, task checklists, audio voice memos, video attachments, drawings, and metadata—is stored exclusively on your Android device in an internal, encrypted-at-rest SQLite database.
           </p>
           <p className="leading-relaxed">
-            We do not collect, transmit, or store your personal notes on our servers. We have zero access to your data.
+            We operate zero remote database servers to store or inspect your notes. We have zero access to your notes, audio recordings, or project names.
           </p>
         </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-white mt-12 mb-4 flex items-center gap-4">
-            <span className="w-6 h-1 bg-[#B39DDB] inline-block"></span>
-            3. Device Permissions Explained
+        <section className="space-y-3">
+          <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+            <span className="w-4 h-1 bg-[#B39DDB]"></span>
+            3. Android Device Permissions
           </h2>
-          <p className="leading-relaxed mb-4">
-            To provide core functionality, the app requests the following device permissions. Data accessed via these permissions never leaves your device unless explicitly triggered by an AI feature (see section 4):
+          <p className="leading-relaxed">
+            To provide core offline productivity capabilities, projectAndNote requests the following device permissions:
           </p>
-          <ul className="list-disc pl-5 space-y-3">
-            <li><strong className="text-white/80">Microphone:</strong> To record voice memos locally.</li>
-            <li><strong className="text-white/80">Camera & Photo Library:</strong> To attach images or videos to your notes.</li>
-            <li><strong className="text-white/80">Notifications / Alarms:</strong> To trigger full-screen focus sprint alerts and scheduled deadlines.</li>
+          <ul className="list-disc pl-5 space-y-2 text-sm">
+            <li><strong className="text-white">Microphone:</strong> To record audio voice memos directly within your note canvas.</li>
+            <li><strong className="text-white">Storage / Photo Library:</strong> To attach images, videos, and local audio files to your notes.</li>
+            <li><strong className="text-white">Exact Alarms & Full-Screen Intent:</strong> To trigger unmissable waking alarms for task deadlines that bypass lock-screen mode.</li>
           </ul>
         </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-white mt-12 mb-4 flex items-center gap-4">
-            <span className="w-6 h-1 bg-[#3DD68C] inline-block"></span>
-            4. Third-Party Services & Network Access
-          </h2>
-          <p className="leading-relaxed mb-4">
-            While the app operates offline-first, it utilizes specific third-party services that require internet access:
-          </p>
-          <ul className="list-disc pl-5 space-y-3">
-            <li><strong className="text-white/80">Google AdMob (Advertising):</strong> To keep the app free, we use Google AdMob. AdMob may collect and use your Device ID, Advertising ID, and general usage data to serve personalized or non-personalized ads. You can learn more about how Google uses data at: <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" className="text-[#F5C542] hover:underline">https://policies.google.com/technologies/partner-sites</a></li>
-            <li><strong className="text-white/80">OpenRouter (Optional AI Enrichment):</strong> If you choose to enable "Smart Enrichment" or "AI OCR", specific note text or images you select will be transmitted securely to OpenRouter (acting as an AI gateway) to generate summaries, tags, or transcriptions. This data is processed momentarily and is not used to train AI models.</li>
-            <li><strong className="text-white/80">OpenGraph Previews:</strong> If you paste a web URL into a note, the app fetches metadata (like the site title and thumbnail) directly from that website.</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-bold text-white mt-12 mb-4 flex items-center gap-4">
-            <span className="w-6 h-1 bg-[#F5C542] inline-block"></span>
-            5. Analytics and Telemetry
+        <section className="space-y-3">
+          <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+            <span className="w-4 h-1 bg-[#3DD68C]"></span>
+            4. Analytics & Telemetry
           </h2>
           <p className="leading-relaxed">
-            We employ zero developer telemetry. We do not use tools like Firebase Analytics or Crashlytics. We do not track your taps, screens viewed, or app usage habits.
+            We do not track screen views, typing speed, button clicks, or document contents. Zero user behavioral analytics are sent to us or any third parties.
           </p>
         </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-white mt-12 mb-4 flex items-center gap-4">
-            <span className="w-6 h-1 bg-[#B39DDB] inline-block"></span>
-            6. Children's Privacy
+        <section className="space-y-3">
+          <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+            <span className="w-4 h-1 bg-[#F5C542]"></span>
+            5. Contact Us
           </h2>
           <p className="leading-relaxed">
-            Our application does not knowingly collect personally identifiable information from children under the age of 13. Because the app does not collect personal data to begin with, no data of minors is ever transmitted to us.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-bold text-white mt-12 mb-4 flex items-center gap-4">
-            <span className="w-6 h-1 bg-[#3DD68C] inline-block"></span>
-            7. Changes to This Privacy Policy
-          </h2>
-          <p className="leading-relaxed">
-            We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-bold text-white mt-12 mb-4 flex items-center gap-4">
-            <span className="w-6 h-1 bg-[#F5C542] inline-block"></span>
-            8. Contact Us
-          </h2>
-          <p className="leading-relaxed">
-            If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at: <a href="mailto:contact.hanuut@gmail.com" className="text-[#F5C542] hover:underline">contact.hanuut@gmail.com</a>.
+            If you have any questions regarding privacy or our local-first implementation, contact us directly at:{' '}
+            <a href="mailto:contact.hanuut@gmail.com" className="text-[#F5C542] hover:underline font-mono">
+              contact.hanuut@gmail.com
+            </a>
           </p>
         </section>
       </main>
       
-      {/* 3. FOOTER */}
-      <footer className="h-16 border-t border-white/10 bg-[#0D141B] px-6 mt-16 relative z-20 flex items-center text-[11px] text-[#94A8BA] uppercase tracking-[0.2em]">
-        <div className="max-w-3xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-4">
-          <div>
-            Copyright &copy; 2026 projectAndNote.
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

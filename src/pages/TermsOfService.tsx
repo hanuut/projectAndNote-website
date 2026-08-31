@@ -1,113 +1,82 @@
 import React from 'react';
 import LegalNav from '../components/LegalNav';
+import Footer from '../components/Footer';
 
 export default function TermsOfService() {
   return (
-    <div className="min-h-screen bg-[#0D141B] font-sans selection:bg-[#F5C542] selection:text-[#0D141B]">
+    <div className="min-h-screen bg-[#090E13] font-sans selection:bg-[#F5C542] selection:text-[#090E13]">
       <LegalNav />
       
       <main className="max-w-3xl mx-auto py-16 px-6 text-[#94A8BA] space-y-6">
-        <header className="mb-12">
-          <h1 className="text-4xl font-black text-white mb-4 tracking-tight">Terms and Conditions for projectAndNote</h1>
-          <p className="text-sm uppercase tracking-widest text-[#B39DDB]">Last Updated: August 29, 2026</p>
+        <header className="mb-12 border-b border-white/10 pb-8">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="px-2.5 py-0.5 rounded text-[11px] font-mono bg-[#F5C542]/15 text-[#F5C542] border border-[#F5C542]/30 font-bold uppercase">
+              Terms & Conditions
+            </span>
+          </div>
+          <h1 className="text-4xl sm:text-5xl font-black text-white mb-4 tracking-tight">
+            Terms of Service
+          </h1>
+          <p className="text-xs font-mono uppercase tracking-widest text-[#B39DDB]">
+            Last Updated: August 31, 2026
+          </p>
         </header>
 
-        <section>
-          <h2 className="text-2xl font-bold text-white mt-12 mb-4 flex items-center gap-4">
-            <span className="w-6 h-1 bg-[#3DD68C] inline-block"></span>
-            1. Acceptance of Terms
+        <section className="space-y-3">
+          <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+            <span className="w-4 h-1 bg-[#3DD68C]"></span>
+            1. Agreement to Terms
           </h2>
           <p className="leading-relaxed">
-            By downloading or using projectAndNote ("the App"), you agree to be bound by these Terms and Conditions. If you do not agree with any part of these terms, you may not use the App.
+            By downloading, installing, or testing projectAndNote ("the Application"), you agree to be bound by these Terms of Service.
           </p>
         </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-white mt-12 mb-4 flex items-center gap-4">
-            <span className="w-6 h-1 bg-[#F5C542] inline-block"></span>
-            2. Data Responsibility and Loss
+        <section className="space-y-3">
+          <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+            <span className="w-4 h-1 bg-[#F5C542]"></span>
+            2. Local Data Responsibility
           </h2>
-          <p className="leading-relaxed mb-4">
-            projectAndNote is a "local-first" application. Your notes, files, and audio recordings are stored exclusively on your device's internal storage. You are solely responsible for your data.
-          </p>
           <p className="leading-relaxed">
-            We do not hold copies of your data on cloud servers. If you delete the app, lose your device, or experience a hardware failure without making a manual backup, your data will be permanently lost. We are not liable for any loss of data.
+            Because projectAndNote operates exclusively as a local-first application, your files and notes exist only on your physical device. You are solely responsible for device-level backups. Deleting the application sandbox or resetting your device will erase local data unless you maintain device backups.
           </p>
         </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-white mt-12 mb-4 flex items-center gap-4">
-            <span className="w-6 h-1 bg-[#B39DDB] inline-block"></span>
-            3. Artificial Intelligence (AI) Disclaimer
-          </h2>
-          <p className="leading-relaxed mb-4">
-            The App includes optional features powered by Artificial Intelligence (AI), such as text summaries, transcriptions, and suggested tasks.
-          </p>
-          <ul className="list-disc pl-5 space-y-3">
-            <li><strong className="text-white/80">Accuracy:</strong> AI systems can hallucinate, make errors, or provide inaccurate information. You should not rely on AI-generated content for medical, legal, financial, or other critical advice.</li>
-            <li><strong className="text-white/80">"As Is":</strong> All AI features are provided "as is." We do not guarantee the accuracy, reliability, or appropriateness of any AI-generated output.</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-bold text-white mt-12 mb-4 flex items-center gap-4">
-            <span className="w-6 h-1 bg-[#3DD68C] inline-block"></span>
-            4. Intellectual Property
+        <section className="space-y-3">
+          <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+            <span className="w-4 h-1 bg-[#B39DDB]"></span>
+            3. Intellectual Property
           </h2>
           <p className="leading-relaxed">
-            The App itself, including its original design, graphics, UI/UX (Fluid Glass × Monomorphism), and code architecture, are the exclusive property of projectAndNote and its creators. You may not reverse-engineer, copy, or distribute the App's proprietary assets.
+            The application design, animations, Energy Ball focus system, code architecture, and proprietary graphics are the exclusive property of projectAndNote and its creators.
           </p>
         </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-white mt-12 mb-4 flex items-center gap-4">
-            <span className="w-6 h-1 bg-[#F5C542] inline-block"></span>
-            5. Acceptable Use
+        <section className="space-y-3">
+          <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+            <span className="w-4 h-1 bg-[#3DD68C]"></span>
+            4. Limitation of Liability
           </h2>
           <p className="leading-relaxed">
-            You agree not to use the App in any way that violates applicable local, national, or international laws. You must not use the optional AI features to generate illegal, harmful, or abusive content.
+            The application is provided on an "AS IS" and "AS AVAILABLE" basis. To the maximum extent permitted by law, projectAndNote shall not be liable for any indirect, incidental, or consequential damages resulting from app usage.
           </p>
         </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-white mt-12 mb-4 flex items-center gap-4">
-            <span className="w-6 h-1 bg-[#B39DDB] inline-block"></span>
-            6. Limitation of Liability
+        <section className="space-y-3">
+          <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+            <span className="w-4 h-1 bg-[#F5C542]"></span>
+            5. Contact Information
           </h2>
           <p className="leading-relaxed">
-            To the maximum extent permitted by law, projectAndNote and its developers shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including loss of profits, data, or goodwill, arising from your access to or use of the App.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-bold text-white mt-12 mb-4 flex items-center gap-4">
-            <span className="w-6 h-1 bg-[#3DD68C] inline-block"></span>
-            7. Governing Law
-          </h2>
-          <p className="leading-relaxed">
-            These Terms shall be governed and construed in accordance with the laws of California, United States, without regard to its conflict of law provisions.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-bold text-white mt-12 mb-4 flex items-center gap-4">
-            <span className="w-6 h-1 bg-[#F5C542] inline-block"></span>
-            8. Contact Us
-          </h2>
-          <p className="leading-relaxed">
-            If you have any questions about these Terms, please contact us at: <a href="mailto:contact.hanuut@gmail.com" className="text-[#F5C542] hover:underline">contact.hanuut@gmail.com</a>.
+            Inquiries regarding these terms may be directed to:{' '}
+            <a href="mailto:contact.hanuut@gmail.com" className="text-[#F5C542] hover:underline font-mono">
+              contact.hanuut@gmail.com
+            </a>
           </p>
         </section>
       </main>
       
-      {/* 3. FOOTER */}
-      <footer className="h-16 border-t border-white/10 bg-[#0D141B] px-6 mt-16 relative z-20 flex items-center text-[11px] text-[#94A8BA] uppercase tracking-[0.2em]">
-        <div className="max-w-3xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-4">
-          <div>
-            Copyright &copy; 2026 projectAndNote.
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

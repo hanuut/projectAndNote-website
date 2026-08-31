@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>projectAndNote | From Raw Thought to Finished Work · 100% Offline Focus & Notes</title>
+    <meta
+      name="description"
+      content="The 100% offline, local-first Android workspace for deep work. Universal block editor, native Focus Sprints with Energy Ball, and full-screen deadline alarms."
+    />
+    <meta name="keywords" content="offline notes app, private notes, focus sprints, pomodoro timer, local first android app, notes with deadlines, full screen alarms, task timer, sqlite notes" />
+    
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://projectandnote.com/" />
+    <meta property="og:title" content="projectAndNote | From Raw Thought to Finished Work" />
+    <meta property="og:description" content="Capture the thought. Structure the work. Lock in. Get it done. 100% offline local-first workspace for Android." />
+    <meta property="og:image" content="/projectAndNoteLogo.svg" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="projectAndNote: Focus & Notes (Android Pre-Release)" />
+    <meta name="twitter:description" content="The 100% offline, local-first Android workspace for deep work and structured execution." />
+    <meta name="twitter:image" content="/projectAndNoteLogo.svg" />
+
+    <link rel="icon" type="image/svg+xml" href="/pn_logo.svg" />
+    <link rel="canonical" href="https://projectandnote.com/" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- JSON-LD Structured Data for SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "SoftwareApplication",
+            "name": "projectAndNote: Focus & Notes",
+            "operatingSystem": "Android",
+            "applicationCategory": "ProductivityApplication",
+            "offers": {
+              "@type": "Offer",
+              "price": "0.00",
+              "priceCurrency": "USD"
+            },
+            "description": "Block notes, focus sprints, full-screen task alarms, and 100% offline SQLite storage on Android."
+          },
+          {
+            "@type": "Organization",
+            "name": "projectAndNote",
+            "url": "https://projectandnote.com",
+            "logo": "https://projectandnote.com/projectAndNoteLogo.svg",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "email": "contact.hanuut@gmail.com",
+              "contactType": "customer support"
+            }
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is projectAndNote?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "projectAndNote is a premium, local-first Android workspace combining a universal block-based document editor, native Focus Sprints with Energy Ball visualizer, and full-screen deadline alarms."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is projectAndNote 100% offline?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. All notes, checklists, voice memos, and images are stored in a local SQLite database on your device. No cloud syncing and zero accounts required."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body class="bg-[#090E13] text-[#94A8BA] font-sans antialiased overflow-x-hidden selection:bg-[#F5C542] selection:text-[#090E13]">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
