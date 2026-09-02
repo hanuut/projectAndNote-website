@@ -65,7 +65,7 @@ export default function CapabilityMatrix() {
       color: '#3DD68C',
       icon: ShieldCheck,
       features: [
-        'Embedded SQLite database architecture',
+        'Embedded 100% Local database architecture',
         'Zero mandatory accounts or logins',
         'Zero cloud server syncing or data telemetry',
         'Files and recordings isolated inside app sandbox',

@@ -44,7 +44,7 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] font-mono text-[#94A8BA]/50">
         <div>&copy; 2026 projectAndNote. All rights reserved.</div>
-        <div>100% Local-First Architecture · SQLite Engine</div>
+        <div>100% Local-First Architecture</div>
       </div>
     </footer>
   );

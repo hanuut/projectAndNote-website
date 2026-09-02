@@ -88,7 +88,7 @@ export default function Home() {
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mt-12 text-xs font-mono text-[#94A8BA]/80">
             <span className="flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 text-[#3DD68C]" />
-              100% Local SQLite
+              100% Local
             </span>
             <span className="flex items-center gap-1.5">
               <Lock className="w-4 h-4 text-[#F5C542]" />
@@ -253,7 +253,7 @@ export default function Home() {
 
                 <div className="p-4 rounded-2xl bg-white/[0.04] border border-[#3DD68C]/40">
                   <span className="text-[10px] font-mono text-[#3DD68C] font-bold block mb-1">#DEV · SPRINT</span>
-                  <div className="text-sm font-bold text-white mb-1">SQLite Migration 2.0</div>
+                  <div className="text-sm font-bold text-white mb-1">DB Migration 2.0</div>
                   <div className="text-xs text-[#94A8BA]">0ms query optimization locked in.</div>
                 </div>
               </div>
@@ -341,9 +341,9 @@ export default function Home() {
               <div className="w-10 h-10 rounded-xl bg-[#3DD68C]/10 border border-[#3DD68C]/30 flex items-center justify-center text-[#3DD68C] mb-4">
                 <HardDrive className="w-5 h-5" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">Embedded SQLite</h3>
+              <h3 className="text-xl font-bold text-white mb-2">Your data never leaves your device</h3>
               <p className="text-xs text-[#94A8BA] leading-relaxed">
-                All notes, checklists, and metadata live in a high-speed SQLite database inside your Android app sandbox with 0ms network latency.
+                All notes, checklists, and metadata live in a high-speed local database inside your Android app sandbox with 0ms network latency.
               </p>
             </div>
 

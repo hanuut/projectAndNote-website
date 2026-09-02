@@ -16,7 +16,7 @@ export default function FAQAccordion() {
     },
     {
       question: "Is projectAndNote an offline notes app?",
-      answer: "Yes, 100%. All notes, task checklists, audio memos, and imported files are stored locally on your device in an internal SQLite database. You can use every core feature on an airplane or without an internet connection."
+      answer: "Yes, 100%. All notes, task checklists, audio memos, and imported files are stored locally on your device in an internal database. You can use every core feature on an airplane or without an internet connection."
     },
     {
       question: "Does projectAndNote require an account or login?",

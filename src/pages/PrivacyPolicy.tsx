@@ -35,10 +35,10 @@ export default function PrivacyPolicy() {
         <section className="space-y-3">
           <h2 className="text-2xl font-bold text-white flex items-center gap-3">
             <span className="w-4 h-1 bg-[#F5C542]"></span>
-            2. 100% Local SQLite Storage
+            2. 100% Local Storage
           </h2>
           <p className="leading-relaxed">
-            All user-generated content—including formatted text, task checklists, audio voice memos, video attachments, drawings, and metadata—is stored exclusively on your Android device in an internal, encrypted-at-rest SQLite database.
+            All user-generated content—including formatted text, task checklists, audio voice memos, video attachments, drawings, and metadata—is stored exclusively on your Android device in an internal, encrypted-at-rest database.
           </p>
           <p className="leading-relaxed">
             We operate zero remote database servers to store or inspect your notes. We have zero access to your notes, audio recordings, or project names.

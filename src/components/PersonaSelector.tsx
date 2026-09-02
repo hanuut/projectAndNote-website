@@ -18,7 +18,7 @@ export default function PersonaSelector() {
       title: 'Researcher & Academic',
       icon: Microscope,
       quote: "My research is spread across PDFs, field audio notes, hypotheses, and external paper links.",
-      resolution: "Consolidate your entire line of inquiry inside a single block canvas with zero cloud latency. Tag, sort, and search across local SQLite without data leakage.",
+      resolution: "Consolidate your entire line of inquiry inside a single block canvas with zero cloud latency. Tag, sort, and search without data leakage.",
       tags: ['Field Voice Memos', 'Universal Blocks', 'Tags & Filter', 'Zero Cloud Sync']
     },
     {
