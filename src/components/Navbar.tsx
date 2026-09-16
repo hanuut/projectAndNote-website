@@ -77,11 +77,7 @@ export default function Navbar({ onOpenEarlyAccess }: NavbarProps) {
 
         {/* Action Header Button */}
         <div className="flex items-center gap-3">
-          <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#3DD68C]/10 border border-[#3DD68C]/30 text-[11px] font-mono text-[#3DD68C]">
-            <span className="w-2 h-2 rounded-full bg-[#3DD68C] animate-pulse"></span>
-            <span>LIVE ON GOOGLE PLAY</span>
-          </div>
-
+          
           <a
             href="https://play.google.com/store/apps/details?id=com.projectandnote.project_note"
             target="_blank"

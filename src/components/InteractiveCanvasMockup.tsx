@@ -4,10 +4,10 @@ import { Mic, Check, Play, Square, Crop, Zap } from 'lucide-react';
 
 export default function InteractiveCanvasMockup() {
   const [tasks, setTasks] = useState([
-    { id: '1', text: 'Mix natural violet dyes & sample test swatch', done: true },
-    { id: '2', text: 'Align 16:9 crop framing for runway teaser', done: true },
-    { id: '3', text: 'Trim lookbook b-roll (00:04.250 - 00:18.500)', done: false },
-    { id: '4', text: 'Export high-res snapshot card for social preview', done: false },
+    { id: '1', text: 'Mix sample color palette & test on paper', done: true },
+    { id: '2', text: 'Crop photo to 16:9 for presentation cover', done: true },
+    { id: '3', text: 'Trim video clip to 15 seconds', done: false },
+    { id: '4', text: 'Export clean PDF to share with the team', done: false },
   ]);
 
   const [aspectRatio, setAspectRatio] = useState<'16:9' | '4:3' | '1:1'>('16:9');
@@ -31,30 +31,30 @@ export default function InteractiveCanvasMockup() {
 
   return (
     <div className="relative w-full max-w-4xl mx-auto rounded-[32px] fluid-glass-elevated p-6 sm:p-9 border border-white/20 shadow-2xl overflow-visible">
-      {/* Studio Header Bar */}
+      {/* Note Header Bar */}
       <div className="flex items-center justify-between border-b border-white/10 pb-5 mb-6">
         <div className="flex items-center gap-3">
-          <span className="px-3 py-1 rounded-lg text-xs font-mono font-bold bg-[#A855F7]/15 text-[#C084FC] border border-[#A855F7]/30">
-            #COLLECTION_2026
+          <span className="px-3 py-1 rounded-lg text-xs font-mono font-bold bg-[#F5C542]/10 text-[#F5C542] border border-[#F5C542]/30">
+            #PROJECT_2026
           </span>
           <span className="text-xs font-mono text-[#94A8BA]/70 hidden sm:inline-block">
-            Local SQLite Sandbox · 0ms sync latency
+            Saved on your phone · Works 100% offline
           </span>
         </div>
 
-        {/* Ambient Focus Sprint Energy Ball (⚡) */}
+        {/* Focus Timer Pill */}
         <div className="flex items-center gap-3 px-3 py-1.5 rounded-full bg-black/40 border border-[#F5C542]/30 shadow-[0_0_20px_rgba(245,197,66,0.15)]">
-          <div className="w-5 h-5 rounded-full bg-gradient-to-tr from-[#F5C542] to-[#A855F7] energy-orb-glow flex items-center justify-center text-[#0D141B]">
+          <div className="w-5 h-5 rounded-full bg-[#F5C542] energy-orb-glow flex items-center justify-center text-[#0D141B]">
             <Zap className="w-3 h-3 fill-current" />
           </div>
           <span className="text-xs font-mono font-bold text-white tracking-wider">
-            24:48 <span className="text-[#F5C542] text-[10px]">SPRINT</span>
+            24:48 <span className="text-[#F5C542] text-[10px]">FOCUS</span>
           </span>
         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 relative">
-        {/* Main Note Canvas */}
+        {/* Main Note Body */}
         <div className="lg:col-span-11 space-y-6">
           {/* Note Title */}
           <div>
@@ -66,12 +66,12 @@ export default function InteractiveCanvasMockup() {
             </h2>
           </div>
 
-          {/* Photo Cropper Block Component */}
+          {/* Photo Cropper Component */}
           <div className="rounded-2xl bg-black/50 border border-white/15 p-4 relative overflow-hidden group">
             <div className="flex items-center justify-between mb-3 text-xs font-mono">
-              <span className="text-[#C084FC] flex items-center gap-1.5 font-bold">
-                <Crop className="w-3.5 h-3.5" />
-                In-Note Photo Cropper
+              <span className="text-white flex items-center gap-1.5 font-bold">
+                <Crop className="w-3.5 h-3.5 text-[#F5C542]" />
+                Built-in Photo Cropper
               </span>
               <div className="flex gap-1">
                 {(['16:9', '4:3', '1:1'] as const).map((ratio) => (
@@ -80,7 +80,7 @@ export default function InteractiveCanvasMockup() {
                     onClick={() => setAspectRatio(ratio)}
                     className={`px-2 py-0.5 rounded text-[10px] font-mono cursor-pointer transition-colors ${
                       aspectRatio === ratio
-                        ? 'bg-[#A855F7] text-white font-bold'
+                        ? 'bg-[#F5C542] text-black font-bold'
                         : 'bg-white/5 text-white/60 hover:text-white'
                     }`}
                   >
@@ -90,26 +90,25 @@ export default function InteractiveCanvasMockup() {
               </div>
             </div>
 
-            {/* Visual Photo preview with dynamic aspect ratio overlay */}
+            {/* Photo Preview */}
             <div
-              className={`relative w-full rounded-xl overflow-hidden bg-gradient-to-tr from-[#172330] via-[#2A1B3D] to-[#121B24] border border-white/10 flex items-center justify-center transition-all duration-300 ${
+              className={`relative w-full rounded-xl overflow-hidden bg-gradient-to-tr from-[#172330] via-[#1E2E3D] to-[#121B24] border border-white/10 flex items-center justify-center transition-all duration-300 ${
                 aspectRatio === '16:9' ? 'h-44 sm:h-52' : aspectRatio === '4:3' ? 'h-56' : 'h-64'
               }`}
             >
-              {/* Overlay Crop Lines */}
               <div className="absolute inset-4 border border-dashed border-[#F5C542]/70 rounded-lg pointer-events-none flex flex-col justify-between p-2">
                 <div className="flex justify-between text-[9px] font-mono text-[#F5C542]">
-                  <span>[CROP_PRESET: {aspectRatio}]</span>
-                  <span>100% RAW SANDBOX</span>
+                  <span>[PHOTO SIZE: {aspectRatio}]</span>
+                  <span>TAP TO RESIZE</span>
                 </div>
                 <div className="text-center text-xs font-mono text-white/90 bg-black/60 py-1 px-3 rounded-full backdrop-blur-md self-center border border-white/10">
-                  Natural Silk & Velvet Texture Studies
+                  Moodboard & Material Studies
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Audio Voice Memo Block */}
+          {/* Voice Memo Block */}
           <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <button
@@ -125,10 +124,10 @@ export default function InteractiveCanvasMockup() {
               <div>
                 <div className="text-xs font-bold text-white flex items-center gap-1.5">
                   <Mic className="w-3.5 h-3.5 text-[#F5C542]" />
-                  Lookbook Director Memo #03
+                  Quick Voice Note #01
                 </div>
                 <div className="text-[10px] font-mono text-[#94A8BA]">
-                  {isPlayingAudio ? '0:08 / 0:34' : '0:34 recorded locally'}
+                  {isPlayingAudio ? '0:08 / 0:34' : '0:34 recorded on device'}
                 </div>
               </div>
             </div>
@@ -147,13 +146,13 @@ export default function InteractiveCanvasMockup() {
             </div>
           </div>
 
-          {/* Smart Checklist with Chaining */}
+          {/* Simple Checklist with Enter-key chaining */}
           <div className="p-4 rounded-2xl bg-[#111C26]/80 border border-white/10">
             <div className="flex items-center justify-between mb-3">
               <span className="text-xs font-mono text-[#3DD68C] font-bold uppercase tracking-wider">
-                EXECUTION CHECKLIST (CHAIN ON ENTER)
+                THINGS TO FINISH (PRESS ENTER TO ADD NEXT)
               </span>
-              <span className="text-[10px] font-mono text-[#94A8BA]/60">44×44 pt touch targets</span>
+              <span className="text-[10px] font-mono text-[#94A8BA]/60">Easy one-tap checkmarks</span>
             </div>
 
             <div className="space-y-2">
@@ -182,14 +181,14 @@ export default function InteractiveCanvasMockup() {
                 </div>
               ))}
 
-              {/* Enter-key Rapid Task Chaining Input */}
+              {/* Fast Add Input */}
               <div className="flex items-center gap-3 pt-2">
-                <div className="w-6 h-6 rounded-lg border border-dashed border-[#F5C542]/50 flex items-center justify-center text-[#F5C542] text-xs">
+                <div className="w-6 h-6 rounded-lg border border-dashed border-[#F5C542]/50 flex items-center justify-center text-[#F5C542] text-xs font-bold">
                   +
                 </div>
                 <input
                   type="text"
-                  placeholder="Type next milestone and press Enter to chain..."
+                  placeholder="Type a task and hit Enter to keep adding..."
                   value={newTaskInput}
                   onChange={(e) => setNewTaskInput(e.target.value)}
                   onKeyDown={handleKeyDown}
@@ -200,7 +199,7 @@ export default function InteractiveCanvasMockup() {
           </div>
         </div>
 
-        {/* Vertical Floating Studio Toolbox Docked to the Right */}
+        {/* Floating Side Tools */}
         <div className="hidden lg:flex lg:col-span-1 justify-center items-start pt-8">
           <VerticalStudioToolbox />
         </div>
