@@ -2,42 +2,106 @@
 
 @layer base {
   :root {
-    --bg-main: #090E13;
-    --card-bg: #111C26;
-    --accent-gold: #F5C542;
-    --accent-green: #3DD68C;
-    --accent-purple: #B39DDB;
-    --text-muted: #94A8BA;
+    --bg-canvas: #0d141b;
+    --surface-glass-1: rgba(17, 28, 38, 0.72);
+    --surface-glass-2: rgba(22, 36, 50, 0.85);
+    --accent-yellow: #f5c542;
+    --accent-yellow-glow: rgba(245, 197, 66, 0.25);
+    --accent-green: #3dd68c;
+    --accent-violet-subtle: #a855f7;
+    --text-primary: #ffffff;
+    --text-secondary: #94a8ba;
+    --text-muted: #576b7d;
   }
 
   body {
-    background-color: #090E13;
-    color: #94A8BA;
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #0d141b;
+    color: #94a8ba;
+    font-family:
+      "Plus Jakarta Sans",
+      system-ui,
+      -apple-system,
+      sans-serif;
+    overflow-x: hidden;
   }
 
-  code, pre, .font-mono {
-    font-family: 'JetBrains Mono', monospace;
+  code,
+  pre,
+  .font-mono {
+    font-family: "JetBrains Mono", monospace;
   }
 }
 
-/* Glassmorphism primitives */
-.glass-panel {
-  background: rgba(17, 28, 38, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+/* 3D Perspective Preservation */
+.perspective-1200 {
+  perspective: 1200px;
 }
 
-.glass-panel-glow {
-  background: linear-gradient(135deg, rgba(25, 41, 56, 0.6) 0%, rgba(13, 21, 29, 0.8) 100%);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(245, 197, 66, 0.25);
-  box-shadow: 0 0 35px rgba(245, 197, 66, 0.08);
+.transform-style-3d {
+  transform-style: preserve-3d;
 }
 
-/* Tactical Glitch Button */
-.btn-glitch {
+/* Apple-Grade Fluid Glass Utility */
+.fluid-glass {
+  background: rgba(15, 23, 33, 0.7);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.15),
+    0 20px 40px -15px rgba(0, 0, 0, 0.7);
+}
+
+.fluid-glass-elevated {
+  background: rgba(20, 32, 44, 0.85);
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.2),
+    0 25px 50px -12px rgba(0, 0, 0, 0.85),
+    0 0 35px -10px rgba(245, 197, 66, 0.15);
+}
+
+/* Rotating Golden-White Border for Studio Toolbox */
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotation {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
+
+.studio-glow-border {
+  position: relative;
+}
+
+.studio-glow-border::before {
+  content: "";
+  position: absolute;
+  inset: -1.5px;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    rgba(255, 255, 255, 0.85),
+    #f5c542,
+    #ffd566,
+    rgba(168, 85, 247, 0.4),
+    rgba(255, 255, 255, 0.85)
+  );
+  border-radius: inherit;
+  z-index: -1;
+  animation: rotation 5s linear infinite;
+}
+
+/* Tactical Yellow Primary CTA Button */
+.btn-glitch-primary {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -45,24 +109,77 @@
   padding: 0.95rem 2.25rem;
   font-weight: 800;
   font-size: 0.875rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #090E13;
-  background-color: #F5C542;
+  color: #0d141b;
+  background: linear-gradient(135deg, #ffe072 0%, #f5c542 100%);
   border-radius: 9999px;
   overflow: hidden;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 0 25px rgba(245, 197, 66, 0.35);
+  box-shadow:
+    0 0 30px rgba(245, 197, 66, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.5);
 }
 
-.btn-glitch:hover {
+.btn-glitch-primary:hover {
   transform: translateY(-2px);
-  background-color: #FFE072;
-  box-shadow: 0 0 40px rgba(245, 197, 66, 0.6);
+  background: linear-gradient(135deg, #fff099 0%, #ffd566 100%);
+  box-shadow:
+    0 0 45px rgba(245, 197, 66, 0.65),
+    inset 0 1px 2px rgba(255, 255, 255, 0.7);
 }
 
-.btn-glitch:active {
-  transform: translateY(0);
+/* Secondary Fluid Glass Button */
+.btn-glass-secondary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95rem 2rem;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.15);
+}
+
+.btn-glass-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(245, 197, 66, 0.4);
+  box-shadow: 0 0 25px rgba(245, 197, 66, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Energy Ball Pulsing */
+@keyframes energyPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 25px rgba(245, 197, 66, 0.6));
+  }
+  50% {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 45px rgba(245, 197, 66, 0.9));
+  }
+}
+
+.energy-orb-glow {
+  animation: energyPulse 3.2s ease-in-out infinite;
+}
+
+/* Ambient Grid Pattern */
+.bg-grid-ambient {
+  background-image: radial-gradient(
+    rgba(245, 197, 66, 0.08) 1px,
+    transparent 1px
+  );
+  background-size: 32px 32px;
 }
 
 /* Scanline Overlay */
@@ -74,8 +191,8 @@
   height: 100%;
   background: linear-gradient(
     to bottom,
-    rgba(255,255,255,0),
-    rgba(255,255,255,0) 50%,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0) 50%,
     rgba(0, 0, 0, 0.25) 50%,
     rgba(0, 0, 0, 0.25)
   );
@@ -84,49 +201,14 @@
   opacity: 0.3;
 }
 
-/* Dynamic Energy Ball Pulsing */
-@keyframes energyPulse {
-  0%, 100% {
-    transform: scale(1);
-    filter: drop-shadow(0 0 25px rgba(245, 197, 66, 0.5));
-  }
-  50% {
-    transform: scale(1.08);
-    filter: drop-shadow(0 0 50px rgba(245, 197, 66, 0.85));
-  }
-}
-
-@keyframes energyRestPulse {
-  0%, 100% {
-    transform: scale(1);
-    filter: drop-shadow(0 0 25px rgba(61, 214, 140, 0.5));
-  }
-  50% {
-    transform: scale(1.08);
-    filter: drop-shadow(0 0 50px rgba(61, 214, 140, 0.85));
-  }
-}
-
-.energy-orb-work {
-  animation: energyPulse 3s ease-in-out infinite;
-}
-
-.energy-orb-rest {
-  animation: energyRestPulse 3.5s ease-in-out infinite;
-}
-
-/* Grid background */
-.bg-grid-pattern {
-  background-image: radial-gradient(rgba(245, 197, 66, 0.08) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-/* Reduced motion accessibility */
+/* Accessibility: Respect Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  *, ::before, ::after {
+  *,
+  ::before,
+  ::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+    transform: none !important;
   }
 }

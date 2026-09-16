@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import React, { useState } from "react";
+import { ChevronDown, ArrowUpRight } from "lucide-react";
 
 interface FAQItem {
   question: string;
-  answer: string;
+  answer: React.ReactNode;
 }
 
 export default function FAQAccordion() {
@@ -11,41 +11,58 @@ export default function FAQAccordion() {
 
   const faqs: FAQItem[] = [
     {
-      question: "What is projectAndNote?",
-      answer: "projectAndNote is a premium, local-first Android workspace for deep work. It combines a universal block-based note editor with native 25/5 Focus Sprints (powered by the Energy Ball visualizer) and full-screen deadline alarms to ensure your projects move from raw ideas to completion."
+      question: "Where can I download projectAndNote?",
+      answer: (
+        <span>
+          projectAndNote is officially live and available for Android on Google
+          Play.{" "}
+          <a
+            href="https://play.google.com/store/apps/details?id=com.projectandnote.project_note"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#F5C542] hover:underline font-bold inline-flex items-center gap-0.5"
+          >
+            Download it free here <ArrowUpRight className="w-3.5 h-3.5" />
+          </a>
+          .
+        </span>
+      ),
     },
     {
       question: "Is projectAndNote an offline notes app?",
-      answer: "Yes, 100%. All notes, task checklists, audio memos, and imported files are stored locally on your device in an internal database. You can use every core feature on an airplane or without an internet connection."
+      answer:
+        "Yes, 100%. All notes, task checklists, audio memos, and imported files are stored locally on your device in an internal SQLite database. You can use every core feature on an airplane or without an internet connection.",
     },
     {
       question: "Does projectAndNote require an account or login?",
-      answer: "No. There is no account creation, no password to remember, and no sign-up wall. When you open the app, your workspace is immediately ready."
+      answer:
+        "No. There is no account creation, no password to remember, and no sign-up wall. When you open the app, your workspace is immediately ready.",
     },
     {
       question: "Where is my data stored?",
-      answer: "All your content resides strictly in your device's secure internal storage sandbox. We do not host your notes on any cloud servers, and we collect zero user telemetry."
+      answer:
+        "All your content resides strictly in your device's secure internal storage sandbox. We do not host your notes on any cloud servers, and we collect zero user telemetry.",
     },
     {
       question: "Can I record voice memos and attach media?",
-      answer: "Yes. You can record voice memos with real-time waveform visualization, insert images, attach videos, and add interactive checklists directly within the same note canvas."
+      answer:
+        "Yes. You can record voice memos with real-time waveform visualization, insert and crop photos (1:1, 4:3, 16:9), trim video clips, and add interactive checklists directly within the same note canvas.",
     },
     {
       question: "What are Focus Sprints and the Energy Ball?",
-      answer: "Focus Sprints are structured deep work sessions utilizing 25-minute work intervals and 5-minute rest breaks. The Energy Ball is a dynamic on-screen visualizer that anchors your concentration directly to the note you are currently executing."
+      answer:
+        "Focus Sprints are structured deep work sessions utilizing 25-minute work intervals and 5-minute rest breaks. The Energy Ball is a dynamic on-screen visualizer that anchors your concentration directly to the note you are currently executing.",
     },
     {
       question: "How do full-screen deadline alarms work?",
-      answer: "When a deadline or scheduled task occurs, projectAndNote triggers a full-screen alarm that wakes your screen even when locked. You can immediately mark 'I'm on it' to open the project note or select 'Postpone' to add 15 minutes."
+      answer:
+        "When a deadline or scheduled task occurs, projectAndNote triggers a full-screen alarm that wakes your screen even when locked. You can immediately mark 'I'm on it' to open the project note or select 'Postpone' to add 15 minutes.",
     },
     {
       question: "Can I customize alarm ringtones and loop segments?",
-      answer: "Yes. projectAndNote includes 8 bundled premium tracks (ambient jazz, lo-fi, neo-soul) and lets you load your own local audio. The built-in timeline scrubber lets you isolate and loop the exact 15 or 30-second segment you want."
+      answer:
+        "Yes. projectAndNote includes 8 bundled premium tracks (ambient jazz, lo-fi, neo-soul) and lets you load your own local audio. The built-in timeline scrubber lets you isolate and loop the exact 15 or 30-second segment you want.",
     },
-    {
-      question: "When is projectAndNote launching on Google Play?",
-      answer: "The app is currently in pre-release testing for Android. You can sign up using the 'Get Early Access' button above to receive early access APK testing builds and launch notifications."
-    }
   ];
 
   const toggle = (index: number) => {
@@ -59,7 +76,7 @@ export default function FAQAccordion() {
         return (
           <div
             key={index}
-            className="rounded-2xl glass-panel border border-white/10 overflow-hidden transition-colors"
+            className="rounded-2xl fluid-glass border border-white/10 overflow-hidden transition-colors"
           >
             <button
               onClick={() => toggle(index)}
@@ -69,7 +86,7 @@ export default function FAQAccordion() {
               <span>{faq.question}</span>
               <ChevronDown
                 className={`w-5 h-5 shrink-0 text-[#94A8BA] transition-transform duration-300 ${
-                  isOpen ? 'rotate-180 text-[#F5C542]' : ''
+                  isOpen ? "rotate-180 text-[#F5C542]" : ""
                 }`}
               />
             </button>

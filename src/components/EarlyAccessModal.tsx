@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import { X, CheckCircle, ArrowRight, ShieldCheck, AlertCircle } from 'lucide-react';
+import { X, CheckCircle, ArrowRight, ShieldCheck, AlertCircle, MessageSquarePlus, Lightbulb } from 'lucide-react';
 
-interface EarlyAccessModalProps {
+interface FeedbackModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export default function EarlyAccessModal({ isOpen, onClose }: EarlyAccessModalProps) {
+export default function EarlyAccessModal({ isOpen, onClose }: FeedbackModalProps) {
   const [email, setEmail] = useState('');
-  const [role, setRole] = useState('Student / Learner');
+  const [category, setCategory] = useState('Feature Request');
+  const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [serverMessage, setServerMessage] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
 
   if (!isOpen) return null;
@@ -20,6 +20,10 @@ export default function EarlyAccessModal({ isOpen, onClose }: EarlyAccessModalPr
     e.preventDefault();
     if (!email || !email.includes('@')) {
       setErrorMsg('Please enter a valid email address.');
+      return;
+    }
+    if (!message.trim()) {
+      setErrorMsg('Please describe your feature idea or feedback.');
       return;
     }
 
@@ -35,37 +39,40 @@ export default function EarlyAccessModal({ isOpen, onClose }: EarlyAccessModalPr
         },
         body: JSON.stringify({
           email: email.trim().toLowerCase(),
-          role: role,
-          source: 'projectandnote_landing_modal',
+          role: `Feedback: [${category}] ${message.trim()}`,
+          source: 'website_feedback_modal',
         }),
       });
 
       const data = await response.json();
 
       if (response.ok && data.success) {
-        setServerMessage(data.message || 'You are registered for early access.');
         setSubmitted(true);
       } else {
-        setErrorMsg(data.message || 'Could not complete registration. Please try again.');
+        // Fallback save
+        saveLocally();
+        setSubmitted(true);
       }
     } catch (err) {
-      console.error('Submission error:', err);
-      // Fallback: save locally so lead is not lost
-      try {
-        const saved = JSON.parse(localStorage.getItem('projectAndNote_waitlist') || '[]');
-        saved.push({ email, role, date: new Date().toISOString() });
-        localStorage.setItem('projectAndNote_waitlist', JSON.stringify(saved));
-      } catch (_) {}
-      setServerMessage('You are on the list!');
+      console.warn('Network issue, saving locally:', err);
+      saveLocally();
       setSubmitted(true);
     } finally {
       setLoading(false);
     }
   };
 
+  const saveLocally = () => {
+    try {
+      const saved = JSON.parse(localStorage.getItem('projectAndNote_feedback') || '[]');
+      saved.push({ email, category, message, date: new Date().toISOString() });
+      localStorage.setItem('projectAndNote_feedback', JSON.stringify(saved));
+    } catch (_) {}
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
-      <div className="relative w-full max-w-lg glass-panel rounded-3xl p-6 md:p-8 border border-white/15 shadow-2xl">
+      <div className="relative w-full max-w-lg fluid-glass rounded-3xl p-6 md:p-8 border border-white/15 shadow-2xl">
         <button
           onClick={onClose}
           className="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
@@ -77,16 +84,17 @@ export default function EarlyAccessModal({ isOpen, onClose }: EarlyAccessModalPr
         {!submitted ? (
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <span className="px-2.5 py-1 rounded-md text-[11px] font-mono font-bold tracking-wider bg-[#F5C542]/10 text-[#F5C542] border border-[#F5C542]/20 uppercase">
-                Pre-Release · Android
+              <span className="px-2.5 py-1 rounded-md text-[11px] font-mono font-bold tracking-wider bg-[#F5C542]/10 text-[#F5C542] border border-[#F5C542]/20 uppercase flex items-center gap-1.5">
+                <Lightbulb className="w-3 h-3" />
+                Community Roadmap
               </span>
             </div>
 
             <h3 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight mb-2">
-              Be first on the lock-in list.
+              Shape the Next Release.
             </h3>
             <p className="text-sm text-[#94A8BA] leading-relaxed mb-6">
-              projectAndNote is in final pre-release testing for Android. Reserve your spot for the early access build and launch invitation.
+              projectAndNote is built for focused creators and builders. Tell us what features, workflows, or tools you want to see next.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -106,19 +114,34 @@ export default function EarlyAccessModal({ isOpen, onClose }: EarlyAccessModalPr
 
               <div>
                 <label className="block text-xs font-mono uppercase tracking-wider text-white/70 mb-1.5">
-                  Primary Focus
+                  Feedback Category
                 </label>
                 <select
-                  value={role}
-                  onChange={(e) => setRole(e.target.value)}
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
                   className="w-full px-4 py-3 rounded-xl bg-[#111C26] border border-white/15 text-white text-sm focus:outline-none focus:border-[#F5C542] transition-all cursor-pointer"
                 >
-                  <option value="Student / Learner">Student / University Study</option>
-                  <option value="Researcher / Academic">Research & Academic Notes</option>
-                  <option value="Developer / Engineer">Software Development & Projects</option>
-                  <option value="Creator / Writer">Content Creation & Writing</option>
-                  <option value="Executive / Professional">Professional Execution</option>
+                  <option value="Feature Request">✨ New Feature Suggestion</option>
+                  <option value="UI & Canvas UX">🎨 Canvas & UI Polish</option>
+                  <option value="Focus Timer / Sprints">⚡ Focus Sprints & Energy Ball</option>
+                  <option value="PDF / Media Library">📚 PDF Library & Media Tools</option>
+                  <option value="Export & Sharing">📤 Export Formats (Markdown, PDF)</option>
+                  <option value="Bug / Performance">🐛 Bug Report / Performance</option>
                 </select>
+              </div>
+
+              <div>
+                <label className="block text-xs font-mono uppercase tracking-wider text-white/70 mb-1.5">
+                  Your Suggestion / Feedback
+                </label>
+                <textarea
+                  required
+                  rows={3}
+                  placeholder="Describe your idea, missing feature, or workflow improvement..."
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/15 text-white placeholder-white/30 text-sm focus:outline-none focus:border-[#F5C542] focus:ring-1 focus:ring-[#F5C542] transition-all resize-none"
+                />
               </div>
 
               {errorMsg && (
@@ -132,16 +155,16 @@ export default function EarlyAccessModal({ isOpen, onClose }: EarlyAccessModalPr
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full btn-glitch py-3.5 text-sm flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70"
+                  className="w-full btn-glitch-primary py-3.5 text-sm flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70"
                 >
-                  <span>{loading ? 'RESERVING SPOT...' : 'REQUEST EARLY ACCESS'}</span>
+                  <span>{loading ? 'SENDING SUGGESTION...' : 'SUBMIT SUGGESTION'}</span>
                   {!loading && <ArrowRight className="w-4 h-4" />}
                 </button>
               </div>
 
-              <div className="flex items-center justify-center gap-2 text-xs text-[#94A8BA]/70 pt-2">
+              <div className="flex items-center justify-center gap-2 text-xs text-[#94A8BA]/70 pt-1">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#3DD68C]" />
-                <span>100% private. Stored securely on api.hanuut.com.</span>
+                <span>Direct line to the core developer. No spam, ever.</span>
               </div>
             </form>
           </div>
@@ -150,16 +173,26 @@ export default function EarlyAccessModal({ isOpen, onClose }: EarlyAccessModalPr
             <div className="w-14 h-14 rounded-full bg-[#3DD68C]/15 border border-[#3DD68C]/30 flex items-center justify-center mx-auto mb-4 text-[#3DD68C]">
               <CheckCircle className="w-8 h-8" />
             </div>
-            <h4 className="text-2xl font-bold text-white mb-2">You're on the access list.</h4>
+            <h4 className="text-2xl font-bold text-white mb-2">Thank you for your voice!</h4>
             <p className="text-sm text-[#94A8BA] leading-relaxed mb-6">
-              {serverMessage || `We saved ${email}. As soon as the Android early build opens, we'll send your access package.`}
+              We received your feedback from <strong className="text-white">{email}</strong>. It directly influences our next release cycle.
             </p>
-            <button
-              onClick={onClose}
-              className="px-6 py-2.5 rounded-full bg-white/10 hover:bg-white/15 text-white text-xs font-mono font-bold tracking-wider transition-colors cursor-pointer"
-            >
-              BACK TO SITE
-            </button>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <a
+                href="https://play.google.com/store/apps/details?id=com.projectandnote.project_note"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto btn-glitch-primary px-6 py-2.5 text-xs font-mono"
+              >
+                DOWNLOAD ON GOOGLE PLAY
+              </a>
+              <button
+                onClick={onClose}
+                className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-white/10 hover:bg-white/15 text-white text-xs font-mono font-bold tracking-wider transition-colors cursor-pointer"
+              >
+                BACK TO SITE
+              </button>
+            </div>
           </div>
         )}
       </div>

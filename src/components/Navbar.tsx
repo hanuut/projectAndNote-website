@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowUpRight, MessageSquarePlus } from 'lucide-react';
 
 interface NavbarProps {
   onOpenEarlyAccess: () => void;
@@ -18,7 +18,7 @@ export default function Navbar({ onOpenEarlyAccess }: NavbarProps) {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full backdrop-blur-xl bg-[#090E13]/85 border-b border-white/[0.08] transition-all">
+    <header className="sticky top-0 z-40 w-full backdrop-blur-xl bg-[#0D141B]/85 border-b border-white/[0.08] transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 md:h-20 flex items-center justify-between">
         {/* Brand with pn_logo.svg */}
         <Link to="/" className="flex items-center gap-3 group">
@@ -43,28 +43,16 @@ export default function Navbar({ onOpenEarlyAccess }: NavbarProps) {
         {/* Desktop Links */}
         <nav className="hidden lg:flex items-center gap-8 text-xs font-mono uppercase tracking-widest text-[#94A8BA]">
           <button
-            onClick={() => scrollTo('philosophy')}
-            className="hover:text-white transition-colors cursor-pointer"
-          >
-            Philosophy
-          </button>
-          <button
-            onClick={() => scrollTo('capture')}
+            onClick={() => scrollTo('canvas')}
             className="hover:text-white transition-colors cursor-pointer"
           >
             Universal Canvas
           </button>
           <button
-            onClick={() => scrollTo('focus')}
-            className="hover:text-[#F5C542] transition-colors cursor-pointer"
-          >
-            Focus Sprints
-          </button>
-          <button
-            onClick={() => scrollTo('execution')}
+            onClick={() => scrollTo('bento')}
             className="hover:text-white transition-colors cursor-pointer"
           >
-            Deadlines & Alarms
+            Features
           </button>
           <button
             onClick={() => scrollTo('privacy')}
@@ -78,21 +66,31 @@ export default function Navbar({ onOpenEarlyAccess }: NavbarProps) {
           >
             FAQ
           </button>
+          <button
+            onClick={onOpenEarlyAccess}
+            className="hover:text-[#F5C542] transition-colors cursor-pointer flex items-center gap-1"
+          >
+            <MessageSquarePlus className="w-3.5 h-3.5 text-[#F5C542]" />
+            <span>Suggestions</span>
+          </button>
         </nav>
 
         {/* Action Header Button */}
         <div className="flex items-center gap-3">
-          <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#F5C542]">
-            <span className="w-2 h-2 rounded-full bg-[#F5C542] animate-ping opacity-75"></span>
-            <span>PRE-RELEASE</span>
+          <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#3DD68C]/10 border border-[#3DD68C]/30 text-[11px] font-mono text-[#3DD68C]">
+            <span className="w-2 h-2 rounded-full bg-[#3DD68C] animate-pulse"></span>
+            <span>LIVE ON GOOGLE PLAY</span>
           </div>
 
-          <button
-            onClick={onOpenEarlyAccess}
-            className="px-4 md:px-5 py-2 md:py-2.5 rounded-full bg-[#F5C542] hover:bg-[#FFE072] text-[#090E13] text-xs font-bold font-mono tracking-wider uppercase transition-all shadow-[0_0_20px_rgba(245,197,66,0.3)] hover:shadow-[0_0_30px_rgba(245,197,66,0.5)] cursor-pointer"
+          <a
+            href="https://play.google.com/store/apps/details?id=com.projectandnote.project_note"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 md:px-5 py-2 md:py-2.5 rounded-full bg-[#F5C542] hover:bg-[#FFE072] text-[#0D141B] text-xs font-bold font-mono tracking-wider uppercase transition-all shadow-[0_0_20px_rgba(245,197,66,0.35)] hover:shadow-[0_0_30px_rgba(245,197,66,0.55)] cursor-pointer flex items-center gap-1.5"
           >
-            Early Access
-          </button>
+            <span>GET APP</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </a>
 
           {/* Mobile Menu Toggle */}
           <button
@@ -109,51 +107,49 @@ export default function Navbar({ onOpenEarlyAccess }: NavbarProps) {
       {mobileMenuOpen && (
         <div className="lg:hidden border-b border-white/10 bg-[#0D141B] px-6 py-6 space-y-4 font-mono text-sm uppercase tracking-wider">
           <button
-            onClick={() => scrollTo('philosophy')}
+            onClick={() => scrollTo('canvas')}
             className="block w-full text-left py-2 text-[#94A8BA] hover:text-white cursor-pointer"
           >
-            01. Philosophy
+            01. Universal Canvas
           </button>
           <button
-            onClick={() => scrollTo('capture')}
+            onClick={() => scrollTo('bento')}
             className="block w-full text-left py-2 text-[#94A8BA] hover:text-white cursor-pointer"
           >
-            02. Universal Canvas
-          </button>
-          <button
-            onClick={() => scrollTo('focus')}
-            className="block w-full text-left py-2 text-[#F5C542] cursor-pointer"
-          >
-            03. Focus Sprints & Energy Ball
-          </button>
-          <button
-            onClick={() => scrollTo('execution')}
-            className="block w-full text-left py-2 text-[#94A8BA] hover:text-white cursor-pointer"
-          >
-            04. Full-Screen Alarms
+            02. Studio Capabilities
           </button>
           <button
             onClick={() => scrollTo('privacy')}
             className="block w-full text-left py-2 text-[#3DD68C] cursor-pointer"
           >
-            05. 100% Offline Architecture
+            03. 100% Offline Architecture
           </button>
           <button
             onClick={() => scrollTo('faq')}
             className="block w-full text-left py-2 text-[#94A8BA] hover:text-white cursor-pointer"
           >
-            06. FAQ
+            04. FAQ
+          </button>
+          <button
+            onClick={() => {
+              setMobileMenuOpen(false);
+              onOpenEarlyAccess();
+            }}
+            className="block w-full text-left py-2 text-[#F5C542] cursor-pointer flex items-center gap-2"
+          >
+            <MessageSquarePlus className="w-4 h-4" />
+            05. Suggest a Feature / Feedback
           </button>
           <div className="pt-4">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenEarlyAccess();
-              }}
-              className="w-full btn-glitch py-3 text-xs"
+            <a
+              href="https://play.google.com/store/apps/details?id=com.projectandnote.project_note"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full btn-glitch-primary py-3 text-xs flex items-center justify-center gap-1.5"
             >
-              REQUEST EARLY ACCESS
-            </button>
+              <span>DOWNLOAD ON GOOGLE PLAY</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </a>
           </div>
         </div>
       )}
