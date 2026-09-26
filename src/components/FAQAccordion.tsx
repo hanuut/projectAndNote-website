@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { ChevronDown, ArrowUpRight } from "lucide-react";
+import React, { useState } from 'react';
+import { ChevronDown, ArrowUpRight } from 'lucide-react';
 
 interface FAQItem {
   question: string;
@@ -11,58 +11,49 @@ export default function FAQAccordion() {
 
   const faqs: FAQItem[] = [
     {
-      question: "Where can I download projectAndNote?",
+      question: "What is projectAndNote?",
+      answer: "projectAndNote is a local-first Android workspace that unifies block-based notes, project lists, Kanban phase boards, Whiteboard Studio 2.0, an offline PDF library, focus sprint timers, and local productivity insights in one app."
+    },
+    {
+      question: "Where can I download the app?",
       answer: (
         <span>
-          projectAndNote is officially live and available for Android on Google
-          Play.{" "}
+          projectAndNote is live on Google Play.{' '}
           <a
             href="https://play.google.com/store/apps/details?id=com.projectandnote.project_note"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[#F5C542] hover:underline font-bold inline-flex items-center gap-0.5"
           >
-            Download it free here <ArrowUpRight className="w-3.5 h-3.5" />
-          </a>
-          .
+            Download on Google Play <ArrowUpRight className="w-3.5 h-3.5" />
+          </a>.
         </span>
-      ),
+      )
     },
     {
-      question: "Is projectAndNote an offline notes app?",
-      answer:
-        "Yes, 100%. All notes, task checklists, audio memos, and imported files are stored locally on your device in an internal SQLite database. You can use every core feature on an airplane or without an internet connection.",
+      question: "Does the app require an account or internet connection?",
+      answer: "No. projectAndNote requires no account setup or cloud login. All core features—document notes, whiteboards, PDF reader, and focus timers—operate 100% offline."
     },
     {
-      question: "Does projectAndNote require an account or login?",
-      answer:
-        "No. There is no account creation, no password to remember, and no sign-up wall. When you open the app, your workspace is immediately ready.",
+      question: "How does Whiteboard Studio 2.0 work?",
+      answer: "Whiteboard Studio 2.0 is a landscape-first 16:9 canvas (1920×1080 canonical resolution) featuring vector freehand drawing, geometric stroke-splitting eraser, shapes, sticky notes, layers/z-ordering, and customizable grid modes."
     },
     {
-      question: "Where is my data stored?",
-      answer:
-        "All your content resides strictly in your device's secure internal storage sandbox. We do not host your notes on any cloud servers, and we collect zero user telemetry.",
+      question: "How does the PDF Library and Book Reference feature work?",
+      answer: "You can import PDF files and books directly onto your device. The app saves your exact page reading progress and allows you to cite specific PDF pages in your notes using Book Reference blocks."
     },
     {
-      question: "Can I record voice memos and attach media?",
-      answer:
-        "Yes. You can record voice memos with real-time waveform visualization, insert and crop photos (1:1, 4:3, 16:9), trim video clips, and add interactive checklists directly within the same note canvas.",
+      question: "How does activity tracking and Insights work?",
+      answer: "Activity data and focus sprint durations are tracked and aggregated entirely on your device in SQLite. No telemetry or behavioral tracking is sent to external servers."
     },
     {
-      question: "What are Focus Sprints and the Energy Ball?",
-      answer:
-        "Focus Sprints are structured deep work sessions utilizing 25-minute work intervals and 5-minute rest breaks. The Energy Ball is a dynamic on-screen visualizer that anchors your concentration directly to the note you are currently executing.",
+      question: "What export formats are supported?",
+      answer: "You can export notes as clean formatted Markdown (.md), styled multi-page PDF documents, or high-resolution graphic social card snapshots."
     },
     {
-      question: "How do full-screen deadline alarms work?",
-      answer:
-        "When a deadline or scheduled task occurs, projectAndNote triggers a full-screen alarm that wakes your screen even when locked. You can immediately mark 'I'm on it' to open the project note or select 'Postpone' to add 15 minutes.",
-    },
-    {
-      question: "Can I customize alarm ringtones and loop segments?",
-      answer:
-        "Yes. projectAndNote includes 8 bundled premium tracks (ambient jazz, lo-fi, neo-soul) and lets you load your own local audio. The built-in timeline scrubber lets you isolate and loop the exact 15 or 30-second segment you want.",
-    },
+      question: "Does projectAndNote support light and dark themes?",
+      answer: "Yes. The app includes both Dark Mode (with signature amber gold accents) and Light Mode (with vibrant purple accents), as well as an option to follow your Android system theme."
+    }
   ];
 
   const toggle = (index: number) => {
@@ -74,10 +65,7 @@ export default function FAQAccordion() {
       {faqs.map((faq, index) => {
         const isOpen = openIndex === index;
         return (
-          <div
-            key={index}
-            className="rounded-2xl fluid-glass border border-white/10 overflow-hidden transition-colors"
-          >
+          <div key={index} className="rounded-2xl fluid-glass border border-white/10 overflow-hidden transition-colors">
             <button
               onClick={() => toggle(index)}
               className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 text-white font-bold text-base sm:text-lg hover:text-[#F5C542] transition-colors cursor-pointer"
@@ -86,7 +74,7 @@ export default function FAQAccordion() {
               <span>{faq.question}</span>
               <ChevronDown
                 className={`w-5 h-5 shrink-0 text-[#94A8BA] transition-transform duration-300 ${
-                  isOpen ? "rotate-180 text-[#F5C542]" : ""
+                  isOpen ? 'rotate-180 text-[#F5C542]' : ''
                 }`}
               />
             </button>
